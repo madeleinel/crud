@@ -1,0 +1,15 @@
+<h1>Quotes</h1>
+<%= link "Add Quote", to: quote_path(@conn, :new), class: "btn btn-success" %>
+<ul>
+  <%= for q <- @quotes do %>
+  <li>
+    "<%= q.quote %>", by <%= q.author %>
+    <ul>
+      <%= link "View", to: quote_path(@conn, :show, q), class: "btn btn-primary" %>
+      <%= link "Edit", to: quote_path(@conn, :edit, q), class: "btn btn-default" %>
+      <%= link "Delete", to: quote_path(@conn, :delete, q), method: :delete, data: [confirm: "Are you sure that you want to delete this quote?"], class: "btn btn-danger" %>
+    </ul>
+  </li>
+  </br>
+  <% end %>
+</ul>
